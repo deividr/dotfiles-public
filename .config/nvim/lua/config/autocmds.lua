@@ -12,3 +12,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.conceallevel = 0
 	end,
 })
+
+-- Disable diagnostics for .env files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { ".env*", "*.env" },
+	callback = function(args)
+		vim.diagnostic.enable(false, { bufnr = args.buf })
+	end,
+})
