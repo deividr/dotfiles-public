@@ -138,19 +138,19 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		opts = function()
-			local keys = require("lazyvim.plugins.lsp.keymaps").get()
-			vim.list_extend(keys, {
-				{
-					"gd",
-					function()
-						-- DO NOT RESUSE WINDOW
-						require("telescope.builtin").lsp_definitions({ reuse_win = false })
-					end,
-					desc = "Goto Definition",
-					has = "definition",
-				},
+		init = function()
+			-- Customização do keymap "gd" via LspAttach
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client and client.server_capabilities.definitionProvider then
+						vim.keymap.set("n", "gd", function()
+							-- DO NOT RESUSE WINDOW
+							require("telescope.builtin").lsp_definitions({ reuse_win = false })
+						end, { buffer = args.buf, desc = "Goto Definition" })
+					end
+				end,
 			})
 		end,
-	},
+	}
 }
