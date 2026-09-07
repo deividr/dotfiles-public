@@ -24,6 +24,9 @@ Gemfile.lock
 node_modules
 bower_components
 fishd.*
+Brewfile.lock.json
+.env*
+*.bak
 
 # Vim
 Session.vim
@@ -32,7 +35,6 @@ Session.vim
 .vim/ftdetect/Dockerfile.vim
 .vim/syntax/Dockerfile.vim
 .vim/snippets/
-.luarc.json
 
 # Xcode
 build/
@@ -57,14 +59,27 @@ DerivedData
 Pods/
 
 # Fish local config
+.config/fish/conf.d
+.config/fish/fish_variables
 .config/fish/config-local.fish
 .config/fish/fish_variables.x86_64
+.config/fish/functions
+.config/fish/completions
+.config/fish/conf.d/_tide*
 
 # Karabiner
 .config/karabiner/automatic_backups
 
 # Tmux
 .config/tmux/plugins
+
+# Vim
+vimsession
+packer_compiled.lua
+nvim.old
+nvim.lazy
+.luarc.json
+nvim-pack-lock.json
 
 # Lazygit
 .config/lazygit/state.yml
@@ -78,3 +93,10 @@ Pods/
 
 # Claude Code
 .claude/*.local.json
+
+# 1password cli
+.config/op/op-daemon.sock
+.config/op/config
+
+# Antigravity
+.antigravitycli
