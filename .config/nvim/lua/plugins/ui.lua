@@ -64,6 +64,12 @@ return {
 		"snacks.nvim",
 		opts = {
 			scroll = { enabled = false },
+			picker = {
+				sources = {
+					explorer = { hidden = true, exclude = { ".git" } },
+					files = { hidden = true },
+				},
+			},
 		},
 		keys = {},
 	},
